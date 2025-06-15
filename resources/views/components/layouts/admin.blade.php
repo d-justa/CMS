@@ -37,7 +37,7 @@
         </flux:navlist>
         <flux:spacer />
         <flux:navlist variant="outline">
-            <flux:navlist.item icon="cog-6-tooth" href="#">Settings</flux:navlist.item>
+            <flux:navlist.item icon="cog-6-tooth" :href="route('site-settings.edit')">Site Settings</flux:navlist.item>
             <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
             @session('impersonate.admin_id')
                 <flux:navlist.item icon="arrow-uturn-left" href="{{ route('impersonate.stop') }}"

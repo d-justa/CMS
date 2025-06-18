@@ -15,7 +15,8 @@ class SiteSettingSeeder extends Seeder
     {
         $settings = [
           'site_title' => 'CMS',
-          'site_tag_line' => 'Your creativity made live'  
+          'site_tag_line' => 'Your creativity made live',
+          'disable_interactions' => 'false'  
         ];
 
         foreach ($settings as $key => $value) {

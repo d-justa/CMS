@@ -10,6 +10,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
 
     @fluxAppearance
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -19,10 +20,10 @@
     <flux:sidebar sticky stashable
         class="bg-zinc-50 dark:bg-zinc-900 border-r rtl:border-r-0 rtl:border-l border-zinc-200 dark:border-zinc-700">
         <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
-        <flux:brand href="#" logo="https://fluxui.dev/img/demo/logo.png" name="Acme Inc."
+        <flux:brand href="#" logo="https://fluxui.dev/img/demo/logo.png" :name="config('settings.site_title')"
             class="px-2 dark:hidden" />
-        <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc."
-            class="px-2 hidden dark:flex" />
+        <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png"
+            :name="config('settings.site_title')" class="px-2 hidden dark:flex" />
         <flux:input as="button" variant="filled" placeholder="Search..." icon="magnifying-glass" />
         <flux:navlist variant="outline">
             <flux:navlist.item icon="home" :href="route('dashboard')" :current="Route::is('dashboard')">Dashboard</flux:navlist.item>
@@ -40,7 +41,9 @@
         </flux:navlist>
         <flux:spacer />
         <flux:navlist variant="outline">
-            <flux:navlist.item icon="cog-6-tooth" :href="route('site-settings.edit')">Site Settings</flux:navlist.item>
+            @can('updateSiteSettings', App\Models\SiteSetting::class)
+                <flux:navlist.item icon="cog-6-tooth" :href="route('site-settings.edit')">Site Settings</flux:navlist.item>
+            @endcan
             <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
             @session('impersonate.admin_id')
                 <flux:navlist.item icon="arrow-uturn-left" href="{{ route('impersonate.stop') }}"
@@ -93,6 +96,8 @@
         {{ $slot }}
     </flux:main>
     @fluxScripts
+
+    <x-partials.js />
 </body>
 
 </html>

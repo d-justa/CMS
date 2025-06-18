@@ -32,6 +32,18 @@ class PermissionSeeder extends Seeder
             [
                 'name' => 'view media',
                 'group' => 'media',
+                'name' => 'manage general site settings',
+                'group' => 'site settings',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'manage contact site settings',
+                'group' => 'site settings',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'manage advanced site settings',
+                'group' => 'site settings',
                 'guard_name' => 'web'
             ],
         ];

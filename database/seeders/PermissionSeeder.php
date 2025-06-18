@@ -19,6 +19,21 @@ class PermissionSeeder extends Seeder
                 'group' => 'user',
                 'guard_name' => 'web'
             ],
+            [
+                'name' => 'insert media',
+                'group' => 'media',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'delete media',
+                'group' => 'media',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'view media',
+                'group' => 'media',
+                'guard_name' => 'web'
+            ],
         ];
 
         DB::table('permissions')->insert($permissions);

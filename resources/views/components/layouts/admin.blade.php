@@ -28,6 +28,9 @@
             <flux:navlist.item icon="home" :href="route('dashboard')" :current="Route::is('dashboard')">Dashboard</flux:navlist.item>
             <flux:navlist.item icon="check-badge" :href="route('roles.index')" :current="Route::is('roles.*')">Roles</flux:navlist.item>
             <flux:navlist.item icon="users" :href="route('users.index')" :current="Route::is('users.*')">Users</flux:navlist.item>
+            @can('viewAny', \App\Models\MediaItem::class)
+                <flux:navlist.item icon="photo" :href="route('media-library')" :current="Route::is('media-library')">Media Library</flux:navlist.item>
+            @endcan
             <flux:navlist.item icon="calendar" href="#">Calendar</flux:navlist.item>
             <flux:navlist.group expandable heading="Favorites" class="hidden lg:grid">
                 <flux:navlist.item href="#">Marketing site</flux:navlist.item>

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SiteSettingController;
 use App\Http\Controllers\UserController;
+use App\Livewire\MediaLibrary;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -41,4 +42,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/impersonate/{user}', [AuthController::class, 'startImpersonation'])->name('impersonate.start')->whereNumber('user');
     Route::get('/impersonate/stop', [AuthController::class, 'stopImpersonation'])->name('impersonate.stop');
+
+    Route::get('/media-library', MediaLibrary::class)->name('media-library');
 });

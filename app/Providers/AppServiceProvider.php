@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\SiteSetting;
 use App\Policies\RolePolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -23,5 +24,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::policy(Role::class, RolePolicy::class);
+        
+        $settings = SiteSetting::all();
+
+        foreach ($settings as $setting) {
+            // Store in config('settings.key')
+            config()->set('settings.' . $setting->key, $setting->value);
+        }
     }
 }

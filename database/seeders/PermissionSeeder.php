@@ -19,6 +19,21 @@ class PermissionSeeder extends Seeder
                 'group' => 'user',
                 'guard_name' => 'web'
             ],
+            [
+                'name' => 'manage general site settings',
+                'group' => 'site settings',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'manage contact site settings',
+                'group' => 'site settings',
+                'guard_name' => 'web'
+            ],
+            [
+                'name' => 'manage advanced site settings',
+                'group' => 'site settings',
+                'guard_name' => 'web'
+            ],
         ];
 
         DB::table('permissions')->insert($permissions);

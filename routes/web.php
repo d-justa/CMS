@@ -25,7 +25,9 @@ Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/site-settings', [SiteSettingController::class, 'edit'])->name('site-settings.edit');
-    Route::put('/site-settings', [SiteSettingController::class, 'update'])->name('site-settings.update');
+    Route::put('/site-settings/general', [SiteSettingController::class, 'updateGeneralSettings'])->name('site-settings.update.general');
+    Route::put('/site-settings/contact', [SiteSettingController::class, 'updateContactSettings'])->name('site-settings.update.contact');
+    Route::put('/site-settings/advanced', [SiteSettingController::class, 'updateAdvancedSettings'])->name('site-settings.update.advanced');
 
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
